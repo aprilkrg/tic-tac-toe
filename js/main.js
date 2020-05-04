@@ -1,15 +1,26 @@
- /*----- constants -----*/
- const colorLookup = {
-    // '1': 'lime',
-    // '-1': 'yellow',
-    // commenting out above lines to try different style. property
+/*----- constants -----*/
+const colorLookup = {
     '1': 'X',
     '-1': 'O',
     'null': null
 };
+
+// const winArrays = {
+//     [[0], [4], [8]],
+//     [[2], [4], [6]],
+//     [[0], [3], [6]],
+//     [[1], [4], [7]],
+//     [[2], [5], [8]],
+//     [[0], [1], [2]],
+//     [[3], [4], [5]],
+//     [[6], [7], [8]],
+// };
+//commented out idea for adding the sum of the variables to find winner
+
 /*----- app's state (variables) -----*/
 let board;
 let turn;
+let winner;
 /*----- cached element references -----*/
 const cellEls = Array.from(document.querySelectorAll('div'));
 /*----- event listeners -----*/
@@ -25,22 +36,12 @@ function init() {
 };
 function render() {
     renderBoard();
- 
-    // or is this where I need to tell the code to interpret lime as x and yellow as o ?
-    // redefine some variables?
-    // do i need to set up the x and o in the constants or in the renderBoard function?
-    // ie do i change 'lime' or do i make 'lime' equal something else here?
-
 };
 function renderBoard() {
     board.forEach(function (cell, cellIdx) {
         //cellEls[cellIdx].style.backgroundColor = colorLookup[cell];
         //commenting out above to try different style. property
-
-        // I THINK THIS IS WHERE I NEED TO WORK TO STOP THE CLICK FROM FILLING THE BACKGROUND        
-        //OORRRR IS THIS WHERE I NEED TO TELL THE CELL TO STOP POPULATING A BACKGROUND COLOR??
         cellEls[cellIdx].innerHTML = colorLookup[cell];
-        // style.backgroud
     });
 };
 function handleClick(evt) {
@@ -51,3 +52,7 @@ function handleClick(evt) {
     turn *= -1;
     render();
 };
+
+// function winner() {
+// //if the sum of any of the winArrays is equal to 3 then x is the winner
+// };
